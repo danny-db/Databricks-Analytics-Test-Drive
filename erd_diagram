@@ -1,0 +1,82 @@
+digraph ERD {
+	rankdir=LR
+	airports [label="airports
+---
+PK: IATA
+IATA" shape=box]
+	flights [label="flights
+---
+PK: 
+Origin
+UniqueCarrier" shape=box]
+	lookupcodes [label="lookupcodes
+---
+PK: UniqueCode
+UniqueCode" shape=box]
+	apjuice_products [label="apjuice_products
+---
+PK: product_id
+product_id" shape=box]
+	retail_stores [label="retail_stores
+---
+PK: store_id
+store_id" shape=box]
+	student_courses [label="student_courses
+---
+PK: id
+id
+student_id" shape=box]
+	student_courses_2 [label="student_courses_2
+---
+PK: id
+id
+student_id" shape=box]
+	students [label="students
+---
+PK: id
+id" shape=box]
+	user_info [label="user_info
+---
+PK: user_id
+user_id" shape=box]
+	patients [label="patients
+---
+PK: patient_id
+patient_id" shape=box]
+	customers [label="customers
+---
+PK: customer_id
+customer_id" shape=box]
+	casuality [label="casuality
+---
+PK: REPORT_ID, UND_UNIT_NUMBER, CASUALTY_NUMBER
+CASUALTY_NUMBER
+REPORT_ID
+UND_UNIT_NUMBER" shape=box]
+	crash [label="crash
+---
+PK: REPORT_ID
+REPORT_ID" shape=box]
+	units [label="units
+---
+PK: REPORT_ID, Unit No
+REPORT_ID
+Unit No" shape=box]
+	customer [label="customer
+---
+PK: customer_id
+customer_id" shape=box]
+	water_consumption [label="water_consumption
+---
+PK: consumption_id
+consumption_id
+customer_id" shape=box]
+	flights -> lookupcodes [label="UniqueCarrier → UniqueCode"]
+	flights -> airports [label="Origin → IATA"]
+	student_courses -> students [label="student_id → id"]
+	casuality -> crash [label="REPORT_ID → REPORT_ID"]
+	casuality -> units [label="REPORT_ID → REPORT_ID"]
+	casuality -> units [label="UND_UNIT_NUMBER → Unit No"]
+	units -> crash [label="REPORT_ID → REPORT_ID"]
+	water_consumption -> customer [label="customer_id → customer_id"]
+}
