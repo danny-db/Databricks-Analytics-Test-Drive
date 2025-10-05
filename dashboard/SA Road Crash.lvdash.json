@@ -1,0 +1,712 @@
+{
+  "datasets": [
+    {
+      "name": "7f1ebd29",
+      "displayName": "vw_crash_details",
+      "queryLines": [
+        "SELECT *\n",
+        "FROM test_drive.road_crash.vw_crash_details\n",
+        "WHERE `Casualty Type` IS NOT NULL"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "fc8f51ad",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "ed09f1f2",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "Casualty_Sex",
+                      "expression": "`Casualty_Sex`"
+                    },
+                    {
+                      "name": "Suburb",
+                      "expression": "`Suburb`"
+                    },
+                    {
+                      "name": "sum(Total_Casualties)",
+                      "expression": "SUM(`Total_Casualties`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Suburb",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(Total_Casualties)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Casualty_Sex",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Total Casualties by Suburb",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "642f0ebd",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "sum(Total_Casualties)",
+                      "expression": "SUM(`Total_Casualties`)"
+                    },
+                    {
+                      "name": "Weather Cond",
+                      "expression": "`Weather Cond`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(Total_Casualties)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Weather Cond",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "title": "Weather Conditions Breakdown",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 15,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "6541627c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "Casualty Type",
+                      "expression": "`Casualty Type`"
+                    },
+                    {
+                      "name": "Casualty_Age",
+                      "expression": "`Casualty_Age`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "histogram",
+              "encodings": {
+                "x": {
+                  "fieldName": "Casualty_Age",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Casualty Type",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Casualty age distribution"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 15,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "5f71c892",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "Suburb",
+                      "expression": "`Suburb`"
+                    },
+                    {
+                      "name": "latitude",
+                      "expression": "`latitude`"
+                    },
+                    {
+                      "name": "longitude",
+                      "expression": "`longitude`"
+                    },
+                    {
+                      "name": "Total_Casualties",
+                      "expression": "`Total_Casualties`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "symbol-map",
+              "encodings": {
+                "coordinates": {
+                  "latitude": {
+                    "fieldName": "latitude"
+                  },
+                  "longitude": {
+                    "fieldName": "longitude"
+                  }
+                },
+                "color": {
+                  "fieldName": "Suburb",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "size": {
+                  "fieldName": "Total_Casualties",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Crash Locations",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 6,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "0f4683d1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "Casualty_Sex",
+                      "expression": "`Casualty_Sex`"
+                    },
+                    {
+                      "name": "Suburb",
+                      "expression": "`Suburb`"
+                    },
+                    {
+                      "name": "sum(Total_Fatalities)",
+                      "expression": "SUM(`Total_Fatalities`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Suburb",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(Total_Fatalities)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Casualty_Sex",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Total Fatalities by Suburb"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 9,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "e15bdf43",
+            "queries": [
+              {
+                "name": "dashboards/01f0a1a164e81bb49bef29f313ca249a/datasets/01f0a1a17e7e138ba5ae6fa7a53e60a4_Suburb",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "Suburb",
+                      "expression": "`Suburb`"
+                    },
+                    {
+                      "name": "Suburb_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Suburb",
+                    "queryName": "dashboards/01f0a1a164e81bb49bef29f313ca249a/datasets/01f0a1a17e7e138ba5ae6fa7a53e60a4_Suburb"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Suburb"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "b3f0e022",
+            "queries": [
+              {
+                "name": "dashboards/01f0a1a164e81bb49bef29f313ca249a/datasets/01f0a1a17e7e138ba5ae6fa7a53e60a4_LGA Name",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "LGA Name",
+                      "expression": "`LGA Name`"
+                    },
+                    {
+                      "name": "LGA Name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "LGA Name",
+                    "queryName": "dashboards/01f0a1a164e81bb49bef29f313ca249a/datasets/01f0a1a17e7e138ba5ae6fa7a53e60a4_LGA Name"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "LGA"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "fa32bc7f",
+            "queries": [
+              {
+                "name": "dashboards/01f0a1a164e81bb49bef29f313ca249a/datasets/01f0a1a17e7e138ba5ae6fa7a53e60a4_Area Speed",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "min(Area Speed)",
+                      "expression": "MIN(`Area Speed`)"
+                    },
+                    {
+                      "name": "max(Area Speed)",
+                      "expression": "MAX(`Area Speed`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "range-slider",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Area Speed",
+                    "queryName": "dashboards/01f0a1a164e81bb49bef29f313ca249a/datasets/01f0a1a17e7e138ba5ae6fa7a53e60a4_Area Speed"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Area Speed"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "3654cae1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    },
+                    {
+                      "name": "DayNight",
+                      "expression": "`DayNight`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "DayNight",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Day Night Breakdown"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 21,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "a31827b1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    },
+                    {
+                      "name": "Stats Area",
+                      "expression": "`Stats Area`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Stats Area",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Stats area breakdown"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 21,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "46bc59b9",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "sum(CASUALTY_NUMBER)",
+                      "expression": "SUM(`CASUALTY_NUMBER`)"
+                    },
+                    {
+                      "name": "Area Speed",
+                      "expression": "`Area Speed`"
+                    },
+                    {
+                      "name": "Casualty Type",
+                      "expression": "`Casualty Type`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "heatmap",
+              "encodings": {
+                "x": {
+                  "fieldName": "Area Speed",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Casualty Type",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "color": {
+                  "fieldName": "sum(CASUALTY_NUMBER)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Speed Casualty type heatmap"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 27,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "91b3cc2a",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7f1ebd29",
+                  "fields": [
+                    {
+                      "name": "Day",
+                      "expression": "`Day`"
+                    },
+                    {
+                      "name": "sum(Total_Casualties)",
+                      "expression": "SUM(`Total_Casualties`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "Day",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "custom-order",
+                      "orderedValues": [
+                        "Sunday",
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday"
+                      ]
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(Total_Casualties)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 27,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    }
+  }
+}
