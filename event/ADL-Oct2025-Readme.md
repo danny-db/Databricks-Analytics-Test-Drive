@@ -1,7 +1,6 @@
 # 🎯 Databricks Analytics Test Drive - Event Resources
 
 **Adelaide Workshop - October 14, 2025**  
-*Hotel Grand Chancellor Adelaide*
 
 Welcome to the resource hub for your Databricks Analytics Test Drive experience! Find everything you need before, during, and after the event.
 
