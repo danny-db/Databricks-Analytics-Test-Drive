@@ -14,7 +14,7 @@ Welcome to the resource hub for your Databricks Analytics Test Drive experience!
 ## 📚 Event Resources
 
 ### **Session Materials**
-- 📖 **Workshop Slides** - [Download](https://to-be-update)
+- 📖 **Workshop Slides** - [Download](https://drive.google.com/file/d/1Xz4VrboA_9YeNKRKfs-_LaTW5FDLoYUg/view?usp=sharing)
 - 📊 **Evaluation form** - [Give us some feedback](https://forms.gle/7fLB5C6Tc9nkZiPA7)
 - 🎯 **Reference** 
   - [Crime Statistics Dataset](https://data.sa.gov.au/data/dataset/crime-statistics)
